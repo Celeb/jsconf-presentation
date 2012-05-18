@@ -1,6 +1,6 @@
 <!doctype html>
 <meta charset="utf-8">
-<title>Cointreu - JSConf</title>
+<title>Cointreau - JSConf</title>
 <link href='http://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Crimson+Text:regular,600,bold' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="css/reset.css">
@@ -20,6 +20,7 @@
 
     <h1>Cointreau</h1>
     <h3>Data Cleansing under node.js</h3>
+
      <p><small>JSConf - 19 de Mayo J. A. Diaz Trepat </small> </p>
 <br><br>
     <p>You can navigate with <span class="key">→</span> and <span class="key">↓</span>.
@@ -40,24 +41,28 @@
 </section>
 
 <section>
+  <section>
     <h2>Validaciones sobre los datos</h2>
 
     <p>
        No es una mala aproximacion entonces, utilizar ajax para validar los datos de esta forma.
     </p>
-    <pre>
-      <code contenteditable class="javascript">
-        <br>
-
+    <pre>      
+      <code contenteditable="" class="javascript"><div><span class="keyword" style="font: inherit; "><font color="#dcdcdc"><span style="line-height: 16px;">$(document).ready(</span></font></span><span style="color: rgb(227, 206, 171); font-size: 14px; ">function </span><span class="params">()</span><span style="font-size: 14px; "> {</span></div><div><span style="font-size: 14px; ">  </span><span class="keyword">var</span> validateUsername =  $('#validateUsername');<br></div><div><span style="font-size: 14px; ">  </span><span style="font-size: 14px; ">$('#username').keyup(</span><span style="color: rgb(227, 206, 171); ">function </span><span class="params">()</span> {<br></div><div>     <span style="color: rgb(227, 206, 171); font-size: 14px; ">var&nbsp;</span><span style="font-size: 14px; ">self</span><span style="color: rgb(239, 239, 143); "> = this;</span></div><div><span style="font: inherit; ">    &nbsp;</span><span style="color: rgb(227, 206, 171); font-size: 14px; ">if</span> ( <span style="color: rgb(239, 239, 143); font-size: 14px; ">this</span>.value !=&nbsp;<span style="color: rgb(239, 239, 143); font-size: 14px; ">this</span><span style="font-size: 14px; ">.lastValue </span>) {</div><div>       <span style="color: rgb(227, 206, 171); font-size: 14px; ">if</span> (<span style="color: rgb(239, 239, 143); font-size: 14px; ">this</span>.timer) clearTimeout(<span style="color: rgb(239, 239, 143); font-size: 14px; ">this</span><span style="font-size: 14px; ">.timer);</span></div><div>       validateUsername.removeClass('error').html('&lt;img src="images/ajax-loader.gif" /&gt;</div><div>                                                        checking availability...');</div><div>       <span style="color: rgb(239, 239, 143); font-size: 14px; ">this</span>.timer = setTimeout(<span style="color: rgb(227, 206, 171); ">function </span><span class="params">()</span><span style="font-size: 14px; "> {</span></div><div><span style="font-size: 14px; ">         $.ajax({</span></div><div><span style="font-size: 14px; ">           url:      'url-to-validation.php',</span></div><div><span style="font-size: 14px; ">           data:     'action=validateusername&amp;username='+self.value,</span></div><div><span style="font-size: 14px; ">           dataType: 'json',</span></div><div><span style="font-size: 14px; ">           type:     'post',</span></div><div><span style="font-size: 14px; ">           success: function (j) {</span></div><div><span style="font-size: 14px; ">             validateUsername.html(j.msg);</span></div><div><span style="font-size: 14px; ">           }</span></div><div><span style="font-size: 14px; ">         });</span></div><div>       }, 100);</div><div>       <span style="color: rgb(239, 239, 143); ">this</span>.lastValue = <span style="color: rgb(239, 239, 143); ">this</span><span style="font-size: 14px; ">.value;</span><br></div><div><span style="font-size: 14px; ">      }</span></div><div><span style="font: inherit; ">  });</span></div><div><span style="font-size: 14px; ">});</span><span style="font-size: 14px; line-height: 16px; ">	</span></div>      
       </code>
     </pre>
+  </section>
+  <section>
+    <h2>A todos nos paso</h2>
+    <img src="img/validaciones.png"></img>
+  </section>
 </section>
 
 <section>
   <section>
-    <h2 style="text-transform:initial">Esto no era un opcion para nuestros clientes.</h2>
+    <h2 style="text-transform:initial">Esto no era un opción para nuestros clientes.</h2>
 <br>
-    <h2 style="text-transform:initial"> Asi implementamos una solución <spam class="cloud">CLOUD</spam> usando node.js
+    <h2 style="text-transform:initial"> Y así implementamos una solución <spam class="cloud">CLOUD</spam> usando node.js
     </h2>
   </section>
 </section>
@@ -65,6 +70,12 @@
   <section>
      <h2>Thrift - Comunicacion entre nodos</h2>
      <p>Un framework creado por facebook y liberado en 2008 a Apache. Crea servicios livianos posibilitando comunicacion entre lenguajes</p>
+     <br>
+    <ol>
+      <li>Thrift es tipado.</li>
+      <li>Thrift permite crear estructuras.</li>
+      <li>Thrift genera RPCs livianos.</li>
+    </ol>
      <br>
   </section>
   <section tagcloud>
@@ -88,31 +99,27 @@
   <section>
      <h2>Un lenguaje simple de interfaces</h2>
       <p> Creando un simple idl </p>
-	<pre>
-	  <code contenteditable="" class="idl"><div><span style="font: inherit; "><span style="color: rgb(227, 206, 171); font-size: 14px; ">struct </span></span><span style="color: rgb(239, 239, 143); font-size: 14px; ">Some</span><span style="color: rgb(239, 239, 143); font-size: 14px; ">Struct </span><span style="font-size: 14px; ">{</span></div><div><span style="font-size: 14px; ">   </span><span style="font-size: 14px; ">1: </span><span style="color: rgb(227, 206, 171); font-size: 14px; ">string&nbsp;</span><span style="color: rgb(239, 239, 143); ">param1</span><span style="font-size: 14px; ">,</span></div><div><span style="font-size: 14px; ">   2</span><span style="font-size: 14px; ">:&nbsp;</span><span style="color: rgb(227, 206, 171); font-size: 14px; ">i16</span><span style="font-size: 14px; ">    </span><span style="color: rgb(239, 239, 143); ">param2</span>,</div><div><span style="font: inherit; ">   3</span><span style="font: inherit; ">:&nbsp;<font color="#e3ceab">bool</font></span><span style="font: inherit; ">   </span><span style="font: inherit; color: rgb(239, 239, 143); ">param3</span><span style="font-size: 14px; ">,</span><br></div><div><span style="font-size: 14px; ">}</span><font color="#efef8f"><br></font></div><div><span style="font: inherit; ">
-</span><span class="function"><font color="#e3ceab">service</font> <span class="title">SomeService</span> {</span><span style="font: inherit; ">
-   string </span><span style="color: rgb(227, 206, 171); font-size: 14px; ">someMethod</span><span style="font-size: 14px; ">(1: SomeStruct struct) </span><span style="color: rgb(227, 206, 171); font-size: 14px; ">throws</span><span style="font-size: 14px; "> (1:SomeException e);</span><span style="font: inherit; ">
-}
+<pre>         <code contenteditable="" class="idl"><div><span style="font: inherit; "><span style="color: rgb(227, 206, 171); font-size: 14px; ">struct </span></span><span style="color: rgb(239, 239, 143); font-size: 14px; ">Some</span><span style="color: rgb(239, 239, 143); font-size: 14px; ">Struct </span><span style="font-size: 14px; ">{</span></div><div><span style="font-size: 14px; ">   1: </span><span style="color: rgb(227, 206, 171); font-size: 14px; ">string </span><span style="font-size: 14px; ">someString,</span></div><div><span style="font-size: 14px; ">   2: </span><span style="color: rgb(227, 206, 171); font-size: 14px; ">i32 </span><span style="font-size: 14px; ">someInt</span></div><div><span style="font-size: 14px; ">}</span><font color="#efef8f"><br></font></div><div><span style="font: inherit; "><span style="color: rgb(227, 206, 171); font-size: 14px; "><br></span></span></div><div><span style="font: inherit; "><span style="color: rgb(227, 206, 171); font-size: 14px; ">exception&nbsp;</span></span><span style="color: rgb(239, 239, 143); font-size: 14px; ">InvalidOperation</span><span style="color: rgb(227, 206, 171); font-size: 14px; "> </span><span style="font-size: 14px; ">{</span></div><div><span style="font-size: 14px; ">   1: </span><span style="color: rgb(227, 206, 171); ">i32 </span><span style="font-size: 14px; ">what,</span></div><div><span style="font-size: 14px; ">   2:&nbsp;</span><span style="color: rgb(227, 206, 171); font-size: 14px; ">string </span><span style="font-size: 14px; ">why</span></div><div><span style="font-size: 14px; ">}</span></div><div><span style="font-size: 14px; "><br></span></div><div><span class="function"><font color="#e3ceab">service</font> <span class="title">SomeService</span> {</span><span style="font: inherit; ">
+  &nbsp;</span><span style="color: rgb(227, 206, 171); font-size: 14px; ">string</span>&nbsp;<span style="color: rgb(239, 239, 143); font-size: 14px; ">someMethod</span><span style="font-size: 14px; ">(1:SomeStruct</span><span style="color: rgb(239, 239, 143); "> </span><span style="font-size: 14px; ">structure</span><span style="color: rgb(239, 239, 143); "> </span><span style="font-size: 14px; ">) </span><span style="color: rgb(227, 206, 171); font-size: 14px; ">throws </span><span style="font-size: 14px; ">(1:InvalidOperation ouch);</span></div><div><span style="font: inherit; ">}
 <br></span></div></code>
-        </pre>
+    </pre>
+    <p> Luego simplemente tipeamos </p>
+    <pre>
+      <code class="bash">
+        <div><span style="font: inherit; "><span style="color: rgb(256, 256, 256); font-size: 14px; ">jd@hefesto:~/cointreau$ thrift --gen js:node thrift_file.idl </span></span></div>
+      </code>
+    </pre>
   </section>
   <section>
     <h2>Server Thrift en js</h2>
         <p> Creando un server simple </p>
-        <pre>
-           <code contenteditable class="javascript">
-        <br>
-
-      </code>
+<pre>           <code contenteditable="" class="javascript"><div style="font: inherit; "><span class="keyword"><span style="font-size: 14px; ">var </span></span><span style="font-size: 14px; ">thrift = require('thrift');</span></div><div style="font: inherit; "><span class="keyword" style="font: inherit; ">var </span><span style="font: inherit; ">SomeService = require('./gen-nodejs/SomeService.js')</span></div><div style="font: inherit; "><span style="font: inherit; "><span style="color: rgb(227, 206, 171); font-size: 14px; ">var</span> ttypes = </span><span style="font-size: 14px; ">require('./gen-nodejs/SomeService_types.js');</span><span style="font-size: 14px; "><br></span></div><div style="font: inherit; "><span style="font-size: 14px; "><br></span></div><div style="font: inherit; "><span style="color: rgb(227, 206, 171); font-size: 14px; ">var</span><span style="color: rgb(227, 206, 171); "> </span>port = 5000; // El puerto</div><div style="font: inherit; "><br></div><div style="font: inherit; "><span style="color: rgb(227, 206, 171); font-size: 14px; ">var </span><span style="font-size: 14px; ">server = thrift.createServer(SomeService, {</span></div><div style="font: inherit; "><span style="font-size: 14px; text-decoration: unde;">       someMethod:&nbsp;</span><span style="color: rgb(227, 206, 171); font-size: 14px; ">function&nbsp;</span><span class="params">(struct, callback)</span><span style="font-size: 14px; "> {</span></div><div style="font: inherit; "><span style="font-size: 14px; ">           // Here goes your implementation</span></div><div style="font: inherit; "><span style="font-size: 14px; ">           </span><span style="color: rgb(227, 206, 171); font-size: 14px; ">if</span><span style="font-size: 14px; "> (struct) {</span></div><div style="font: inherit; "><span style="font-size: 14px; ">              </span><span style="color: rgb(227, 206, 171); font-size: 14px; ">return</span><span style="font-size: 14px; "> callback(null, "El valor no es ningun valor falsy");</span></div><div style="font: inherit; "><span style="font-size: 14px; ">           } </span><span style="color: rgb(227, 206, 171); font-size: 14px; ">else</span><span style="font-size: 14px; "> {</span></div><div style="font: inherit; "><span style="font-size: 14px; ">             &nbsp;</span><span style="color: rgb(227, 206, 171); font-size: 14px; ">var </span><span style="font-size: 14px; ">error = </span><span style="color: rgb(227, 206, 171); font-size: 14px; ">new </span><span style="color: rgb(239, 239, 143); font-size: 14px; ">Error</span><span style="font-size: 14px; ">("El valor es un valor falsy");</span></div><div style="font: inherit; "><span style="font-size: 14px; ">              </span><span style="color: rgb(227, 206, 171); font-size: 14px; ">return</span><span style="font-size: 14px; "> callback(error, null);</span></div><div style="font: inherit; "><span style="font-size: 14px; ">           }</span></div><div style="font: inherit; "><span style="font-size: 14px; ">       }</span></div><div style="font: inherit; "><span style="font-size: 14px; ">});</span></div><div style="font: inherit; "><span style="font-size: 14px; ">server.listen(port);</span></div></code>
     </pre>
-
   </section>
   <section>
     <h2>Cliente Thrift en js</h2>
         <p> Creando un cliente simple </p>
-        <pre>
-           <code contenteditable class="javascript">
-        <br>
+        <pre>           <code contenteditable="" class="javascript"><div><span class="keyword">var </span>thrift = require('thrift');</div><div><span class="keyword">var </span>SomeService = require('./gen/SomeService.js');</div><div><span style="color: rgb(227, 206, 171); ">var</span> ttypes = require('./gen/SomeService_types.js');<br></div><div><br></div><div><br></div><div><span style="color: rgb(227, 206, 171); font-size: 14px; ">var </span><span style="font-size: 14px; ">host = "127.0.0.1"; // Aca el host o la IP</span><br></div><div><span style="color: rgb(227, 206, 171); font-size: 14px; ">var </span><span style="font-size: 14px; ">port = 5000;        // Y aca va el port que definimos arriba</span><br></div><div><span style="color: rgb(227, 206, 171); font-size: 14px; "><br></span></div><div><span style="font: inherit; color: rgb(227, 206, 171); ">var </span><span style="font-size: 14px; ">connection = thrift.createConnection(host, port);</span><br></div><div><span style="color: rgb(227, 206, 171); font-size: 14px; ">var</span><span style="color: rgb(227, 206, 171); "> </span><span style="font-size: 14px; ">client = thrift.createClient(SomeService, connection);</span><br></div><div><span style="font-size: 14px; "><br></span></div><div><span style="font-size: 14px; ">connection.on('error', </span><span style="color: rgb(227, 206, 171); font-size: 14px; ">function </span><span style="font-size: 14px; ">(err) {</span></div><div><span style="font-size: 14px; ">     // Error handling</span></div><div><span style="font-size: 14px; ">     </span><span style="color: rgb(227, 206, 171); font-size: 14px; ">if</span><span style="font-size: 14px; "> (err) </span><span style="font-size: 14px; "> {</span></div><div><span style="font-size: 14px; ">         console.log(err.message);</span></div><div><span style="font-size: 14px; ">         process.exit();</span></div><div><span style="font-size: 14px; ">     }</span></div><div><span style="font-size: 14px; ">});</span></div><div><span style="color: rgb(227, 206, 171); font-size: 14px; ">var&nbsp;</span><span style="font-size: 14px; ">callMethod</span><span style="font-size: 14px; "> = </span><span style="color: rgb(227, 206, 171); font-size: 14px; ">function</span><span style="color: rgb(227, 206, 171); ">&nbsp;</span><span class="params">(string, number, callback)</span><span style="font-size: 14px; "> {</span></div><div><span style="font-size: 14px; ">    </span><span style="color: rgb(227, 206, 171); font-size: 14px; ">var</span><span style="color: rgb(227, 206, 171); "> </span>arg = {};</div><div>    <span style="font-size: 14px; ">arg.someString = string;</span></div><div><span style="font-size: 14px; ">    </span><span style="font: inherit; ">arg.someInt = number;</span><span style="font-size: 14px; "><br></span></div><div>    <span style="color: rgb(227, 206, 171); font-size: 14px; ">var </span><span style="font-size: 14px; ">structure = </span><span style="color: rgb(227, 206, 171); font-size: 14px; ">new </span><span style="color: rgb(239, 239, 143); font-size: 14px; ">ttypes.SomeStruct</span><span style="font-size: 14px; ">(arg);</span></div><div><span style="font-size: 14px; ">    client.someMethod(arg, callback);</span></div><div><span style="font-size: 14px; ">};</span></div><div><br></div><div>callMethod("Esto es un string", 2.3, <span style="color: rgb(227, 206, 171); font-size: 14px; ">function</span>(err, resp) {</div><div>    console.log("Error: "+err);</div><div>    console.log(<span style="font-size: 14px; ">"Response: "+</span>resp);</div><div>    process.exit();</div><div>});</div>
 
       </code>
     </pre>
@@ -133,6 +140,10 @@
     <p class="fragment"> Un cliente muy comodo para trabajar con los datos</p>
     <p class="fragment"> Podiamos extenderlo para que entendiera thrift</p>
   </section>
+  <section>
+    <p>Conectamos nuestros servicios thrift con el G.Refine</p>
+    <img src="img/google_refine_1.png"/>
+  </section>
 </section> <!-- eo lifecycle group -->
 
 <section>
@@ -144,7 +155,7 @@
     <h2> Porque javascript? </h2>  
 	<br>
      <p> Rompe con la torre de babel entre el servidor y el cliente <p>
-     <p class="fragment"> y nos encanta JavaScript <3 </p>
+     <p class="fragment"> y nos encanta JavaScript ❤</p>
   </section>
 </section>
 
@@ -158,14 +169,26 @@
     <h1> Cosas malas que tiene desarrollar js en el server.</h1>
 	<br>
       <p> No esta maduro, y hay cosas basicas que no estan implementadas a fondo.<p>
-  <section>
-</section>
+  </section>
 </section>
 <section>
-    <h2> Ciclo de desarrollo </h2>
-    <p> nodeunit ( hacer un test )</p>
-    <p> node-insepctor + chrome-dev-tools ( hacer un test )</p>
+  <section>
+    <h2> Ciclo de desarrollo en Cloud</h2>
+    <p>Debugger: node-inspector + chrome devtools</p>
+    <img src="img/debugger.png"/>
+  </section>
+  <section>
+    <h2>Emacs o vi con ejecucion de JSLint</h2>
+    <img src="img/jslint.png"/>
+  </section>
+  <section>
+    <h2>git branch model</h2>
+    <img src="img/gitbranchingmodel.png"/>
+  </section>
 </section>
+<section>
+  <h1>Proximamente</h1>
+  <p>OT via share.js</p>
 </section>
  <!--   <h1>♥⏝♥</h1>
 
